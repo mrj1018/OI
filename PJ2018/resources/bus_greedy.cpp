@@ -20,10 +20,10 @@ int main(void){
     int ans=0;
     int last_bus_time=a[0]; //记录当前的最后一班车的时间 
     for (int i=0;i<n;i++){
-    	if (a[i]>=last_bus_time+m) //再发一班车以搭载第i个人 
-    		last_bus_time=a[i];
+        if (a[i]>=last_bus_time+m) //再发一班车以搭载第i个人
+            last_bus_time=a[i];
     	if (a[i]>last_bus_time)
-    		last_bus_time+=m;
+            last_bus_time+=m;
         ans+=(last_bus_time-a[i]); //将第i个人等待的时间累加入答案中 
     }
     printf("%d\n",ans);
