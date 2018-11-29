@@ -9,32 +9,22 @@ int a[MAXN]; //a依次记录来坐车的人来的时间
 
 int main(void){
     int n,m;
-    int max_time,min_time; //保存最晚和最早的到达时间 
     scanf("%d%d",&n,&m);
     if (m<=1){ //每个时刻都可以发车，不需等待 
         printf("0\n");
         return 0;
     }
-    for (int i=0;i<n;i++){
+    for (int i=0;i<n;i++)
         scanf("%d",a+i);
-        a[i]++; //将时间向右平移一个单位，便于处理 
-	}
     sort(a,a+n); //对时间进行排序
     int ans=0;
-    int last_gone,last_bus;
+    int last_bus_time=a[0]; //记录当前的最后一班车的时间 
     for (int i=0;i<n;i++){
-        if (a[i]==last_bus){
-            last_gone=i;
-            continue;
-        }
-        if (a[i]>=last_bus+m){
-            for (int j=last_gone+1;j<n;j++){
-                
-                ans+=a[i]-a[j];
-            }
-            last_gone=i;
-            last_bus=a[i];
-        }
+    	if (a[i]>=last_bus_time+m) //再发一班车以搭载第i个人 
+    		last_bus_time=a[i];
+    	if (a[i]>last_bus_time)
+    		last_bus_time+=m;
+        ans+=(last_bus_time-a[i]); //将第i个人等待的时间累加入答案中 
     }
     printf("%d\n",ans);
     return 0;
