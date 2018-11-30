@@ -5,26 +5,26 @@
 #define INF 100000000
 using namespace std;
 
-int a[MAXN]; //aä¾æ¬¡è®°å½•æ¥åè½¦çš„äººæ¥çš„æ—¶é—´
+int a[MAXN]; //aÒÀ´Î¼ÇÂ¼À´×ø³µµÄÈËÀ´µÄÊ±¼ä
 
 int main(void){
     int n,m;
     scanf("%d%d",&n,&m);
-    if (m<=1){ //æ¯ä¸ªæ—¶åˆ»éƒ½å¯ä»¥å‘è½¦ï¼Œä¸éœ€ç­‰å¾… 
+    if (m<=1){ //Ã¿¸öÊ±¿Ì¶¼¿ÉÒÔ·¢³µ£¬²»ĞèµÈ´ı 
         printf("0\n");
         return 0;
     }
     for (int i=0;i<n;i++)
         scanf("%d",a+i);
-    sort(a,a+n); //å¯¹æ—¶é—´è¿›è¡Œæ’åº
+    sort(a,a+n); //¶ÔÊ±¼ä½øĞĞÅÅĞò
     int ans=0;
-    int last_bus_time=a[0]; //è®°å½•å½“å‰çš„æœ€åä¸€ç­è½¦çš„æ—¶é—´ 
+    int last_bus_time=a[0]; //¼ÇÂ¼µ±Ç°µÄ×îºóÒ»°à³µµÄÊ±¼ä 
     for (int i=0;i<n;i++){
-        if (a[i]>=last_bus_time+m) //å†å‘ä¸€ç­è½¦ä»¥æ­è½½ç¬¬iä¸ªäºº
-            last_bus_time=a[i];
+    	if (a[i]>=last_bus_time+m) //ÔÙ·¢Ò»°à³µÒÔ´îÔØµÚi¸öÈË 
+    		last_bus_time=a[i];
     	if (a[i]>last_bus_time)
-            last_bus_time+=m;
-        ans+=(last_bus_time-a[i]); //å°†ç¬¬iä¸ªäººç­‰å¾…çš„æ—¶é—´ç´¯åŠ å…¥ç­”æ¡ˆä¸­ 
+    		last_bus_time+=m;
+        ans+=(last_bus_time-a[i]); //½«µÚi¸öÈËµÈ´ıµÄÊ±¼äÀÛ¼ÓÈë´ğ°¸ÖĞ 
     }
     printf("%d\n",ans);
     return 0;
