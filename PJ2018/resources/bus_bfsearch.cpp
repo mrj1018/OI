@@ -4,21 +4,21 @@
 #define INF 100000000
 using namespace std;
 
-int a[MAXN]; //aä¾æ¬¡è®°å½•æ¥åè½¦çš„äººæ¥çš„æ—¶é—´
-int max_time; //max_timeè®°å½•æœ€å¤§æ—¶é—´
+int a[MAXN]; //aÒÀ´Î¼ÇÂ¼À´×ø³µµÄÈËÀ´µÄÊ±¼ä
+int max_time; //max_time¼ÇÂ¼×î´óÊ±¼ä
 int n,m;
 
 int dfs(int now_time,int last_sent);
 
 int main(void){
     scanf("%d%d",&n,&m);
-    if (m<=1){ //æ¯ä¸ªæ—¶åˆ»éƒ½å¯ä»¥å‘è½¦ï¼Œä¸éœ€ç­‰å¾… 
+    if (m<=1){ //Ã¿¸öÊ±¿Ì¶¼¿ÉÒÔ·¢³µ£¬²»ĞèµÈ´ı 
         printf("0\n");
         return 0;
     }
     for (int i=1;i<=n;i++)
         scanf("%d",a+i);
-    sort(a+1,a+1+n); //å¯¹æ—¶é—´è¿›è¡Œæ’åº
+    sort(a+1,a+1+n); //¶ÔÊ±¼ä½øĞĞÅÅĞò
     
     int m_times_2=m*2; //2m
     
@@ -26,7 +26,7 @@ int main(void){
     
     int ans=INF;
     for (int i=0;i<m;i++){
-        int tans=dfs(a[1]+i,0); //æšä¸¾é¦–ç­è½¦æ—¶é—´,è®°å½•ç­”æ¡ˆ
+        int tans=dfs(a[1]+i,0); //Ã¶¾ÙÊ×°à³µÊ±¼ä,¼ÇÂ¼´ğ°¸
         if (tans<ans)
             ans=tans;
     }
@@ -35,25 +35,25 @@ int main(void){
 }
 
 int dfs(int now_time,int last_sent){
-    //åœ¨now_timeæ—¶åˆ»å‘è½¦, è®¡ç®—last_sent+1~nè¿™äº›äººçš„æœ€çŸ­ç­‰å¾…æ—¶é—´ä¹‹å’Œ 
-    //è¦æ±‚åœ¨now_timeæ—¶åˆ»å‘è½¦
-    int now_ans=0,now_sent=last_sent; //now_ansè¡¨ç¤ºç­‰å¾…è¿™è¶Ÿè½¦çš„äººçš„ç­‰å¾…æ—¶é—´ä¹‹å’Œ 
-    //æŠŠç­‰å¾…è¿™ä¸€è¶Ÿè½¦çš„äººçš„ç­‰å¾…æ—¶é—´ç´¯åŠ å…¥ç­”æ¡ˆä¸­
+    //ÔÚnow_timeÊ±¿Ì·¢³µ, ¼ÆËãlast_sent+1~nÕâĞ©ÈËµÄ×î¶ÌµÈ´ıÊ±¼äÖ®ºÍ 
+    //ÒªÇóÔÚnow_timeÊ±¿Ì·¢³µ
+    int now_ans=0,now_sent=last_sent; //now_ans±íÊ¾µÈ´ıÕâÌË³µµÄÈËµÄµÈ´ıÊ±¼äÖ®ºÍ 
+    //°ÑµÈ´ıÕâÒ»ÌË³µµÄÈËµÄµÈ´ıÊ±¼äÀÛ¼ÓÈë´ğ°¸ÖĞ
     while (now_sent<n && a[now_sent+1]<=now_time){
-        //è¡¨ç¤ºnow_sent+1è¿™ä¸ªäººå¯ä»¥ä¹˜åè¿™è¶Ÿè½¦ 
+        //±íÊ¾now_sent+1Õâ¸öÈË¿ÉÒÔ³Ë×øÕâÌË³µ 
         now_sent++;
         now_ans+=(now_time-a[now_sent]);
     }
     if (now_sent==n){
-        //è¯´æ˜æ‰€æœ‰çš„äººéƒ½å·²ç»æœ‰è½¦å¯ä¹˜
+        //ËµÃ÷ËùÓĞµÄÈË¶¼ÒÑ¾­ÓĞ³µ¿É³Ë
         return now_ans;
     }
-    //æšä¸¾ä¸‹ä¸€ç­è½¦çš„æ—¶é—´
+    //Ã¶¾ÙÏÂÒ»°à³µµÄÊ±¼ä
     int m_times_2=m*2;
-    int return_ans=INF; //å­˜å‚¨å°†è¦è¿”å›çš„æœ€å°ç­”æ¡ˆï¼Œå³last_sent+1åˆ°nè¿™äº›äººçš„æœ€å°ç­‰å¾…æ—¶é—´ 
+    int return_ans=INF; //´æ´¢½«Òª·µ»ØµÄ×îĞ¡´ğ°¸£¬¼´last_sent+1µ½nÕâĞ©ÈËµÄ×îĞ¡µÈ´ıÊ±¼ä 
     for (int i=m;i<m_times_2;i++){
-        //ç›¸é‚»ä¸¤ç­è½¦çš„æ—¶é—´é—´éš”ä¸å°äºm,ä¸å¤§äº2m 
-        int tans=dfs(now_time+i,now_sent); //tansè¡¨ç¤ºåé¢çš„äºº(now_sent+1~n)ç­‰è½¦çš„æœ€å°æ—¶é—´ 
+        //ÏàÁÚÁ½°à³µµÄÊ±¼ä¼ä¸ô²»Ğ¡ÓÚm,²»´óÓÚ2m 
+        int tans=dfs(now_time+i,now_sent); //tans±íÊ¾ºóÃæµÄÈË(now_sent+1~n)µÈ³µµÄ×îĞ¡Ê±¼ä 
         if (tans+now_ans<return_ans)
             return_ans=tans+now_ans;
     }
