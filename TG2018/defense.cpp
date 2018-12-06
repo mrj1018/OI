@@ -12,6 +12,8 @@ int fst[MAXN],nxt[MAXM];
 int g[MAXM];
 ll f[MAXN][3];
 char data_type[MAXCHAR];
+
+void dfs(int x,int pa);
 int main(void){
     int m;
     int edges=0;
@@ -52,10 +54,31 @@ int main(void){
             }
         }
         int ap=p[a],bp=p[b];
-        p[a]=x?(-INF):(INF);
-        p[b]=y?(-INF):(INF);
+        p[a]=(x)?(-INF):(INF);
+        p[b]=(y)?(-INF):(INF);
         dfs(ROOT);
+        ll ans=INF+INF+INF;
+        (f[ROOT][0]<ans)?(ans=f[ROOT][0]):(0);
+        (f[ROOT][1]<ans)?(ans=f[ROOT][1]):(0);
+        ans+=(x)?(INF):(-INF);
+        ans+=(y)?(INF):(-INF);
+        printf("%lld\n",ans);
+    }
+    return 0;
+}
+
+void dfs(int x,int pa){
+    ll chose=p[x];
+    ll n_chose=0;
+    
+    for (int ei=fst[x];ei;ei=nxt[ei]){
+        int v=g[ei];
+        if (v==pa)
+            continue;
+        n_chose+=f[v][1];
+        chose+=(f[v][0]<f[v][1])?(f[v][0]):(f[v][1]);
     }
     
-    return 0;
+    f[x][0]=n_chose;
+    f[x][1]=chose;
 }
