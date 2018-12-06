@@ -56,12 +56,14 @@ int main(void){
         int ap=p[a],bp=p[b];
         p[a]=(x)?(-INF):(INF);
         p[b]=(y)?(-INF):(INF);
-        dfs(ROOT);
+        dfs(ROOT,0);
         ll ans=INF+INF+INF;
         (f[ROOT][0]<ans)?(ans=f[ROOT][0]):(0);
         (f[ROOT][1]<ans)?(ans=f[ROOT][1]):(0);
-        ans+=(x)?(INF):(-INF);
-        ans+=(y)?(INF):(-INF);
+        p[a]=ap;
+        p[b]=bp;
+        (x)?(ans+=(INF+ap)):(0);
+        (y)?(ans+=(INF+bp)):(0);
         printf("%lld\n",ans);
     }
     return 0;
@@ -75,6 +77,7 @@ void dfs(int x,int pa){
         int v=g[ei];
         if (v==pa)
             continue;
+        dfs(v,x);
         n_chose+=f[v][1];
         chose+=(f[v][0]<f[v][1])?(f[v][0]):(f[v][1]);
     }
