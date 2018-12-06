@@ -2,7 +2,8 @@
 #define MAXN 100005
 #define MAXM 200005
 #define MAXCHAR 15
-#define INF 19260817
+#define INF 100000000005ll
+#define ROOT 1
 using namespace std;
 typedef long long ll;
 int n;
@@ -53,6 +54,7 @@ int main(void){
         int ap=p[a],bp=p[b];
         p[a]=x?(-INF):(INF);
         p[b]=y?(-INF):(INF);
+        dfs(ROOT);
     }
     
     return 0;
