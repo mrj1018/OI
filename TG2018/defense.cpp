@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <algorithm>
 #define MAXN 100005
 #define MAXM 200005
 #define MAXCHAR 15
@@ -15,12 +16,14 @@ ll f0[MAXN][3];
 ll ft[MAXN][3];
 int par[MAXN];
 char data_type[MAXCHAR];
+ll eg[MAXM];
 
 void push_up(int x,int tar);
 void dfs(int x,int pa);
 int main(void){
     int m;
     int edges=0;
+    int egs=0;
     scanf("%d%d",&n,&m);
     scanf("%s",data_type);
     for (int i=1;i<=n;i++)
@@ -38,8 +41,12 @@ int main(void){
         g[edges]=u;
         nxt[edges]=fst[v];
         fst[v]=edges;
+        
+        egs++;
+        eg[egs]=u*ll(n+1)+v;
     }
     
+    sort(eg,eg+egs);
     dfs(ROOT,0);
     
     while (m--){
@@ -48,12 +55,15 @@ int main(void){
         //Judge -1
         if ((!x) && (!y)){
             int ok=1;
-            for (int ei=fst[a];ei;ei=nxt[ei]){
-                if (g[ei]==b){
+            ll thash=a*ll(n+1)+b;
+            if ((*lower_bound(eg,eg+egs,thash))==thash)
+                ok=0;
+            else {
+                thash=b*ll(n+1)+a;
+                if ((*lower_bound(eg,eg+egs,thash))==thash)
                     ok=0;
-                    break;
-                }
             }
+            
             if (!ok){
                 printf("-1\n");
                 continue;
@@ -111,7 +121,7 @@ void push_up(int x,int tar){
         ll n_chose=0;
         for (int ei=fst[x];ei;ei=nxt[ei]){
             int v=g[ei];
-            if (v==pa)
+            if (v==par[x])
                 continue;
             if (is_changed[v]){
                 n_chose+=ft[v][1];
