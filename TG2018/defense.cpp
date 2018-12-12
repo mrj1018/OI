@@ -94,8 +94,8 @@ int main(void){
         }
         
         ll ans=INF+INF+INF;
-        (f[ROOT][0]<ans)?(ans=f[ROOT][0]):(0);
-        (f[ROOT][1]<ans)?(ans=f[ROOT][1]):(0);
+        (ft[ROOT][0]<ans)?(ans=ft[ROOT][0]):(0);
+        (ft[ROOT][1]<ans)?(ans=ft[ROOT][1]):(0);
         p[a]=ap;
         p[b]=bp;
         (x)?(ans+=(INF+ap)):(0);
@@ -106,7 +106,26 @@ int main(void){
 }
 
 void push_up(int x,int tar){
-    
+    while (x!=tar){
+        ll chose=p[x];
+        ll n_chose=0;
+        for (int ei=fst[x];ei;ei=nxt[ei]){
+            int v=g[ei];
+            if (v==pa)
+                continue;
+            if (is_changed[v]){
+                n_chose+=ft[v][1];
+                chose+=(ft[v][0]<ft[v][1])?(ft[v][0]):(ft[v][1]);
+            }
+            else {
+                n_chose+=f0[v][1];
+                chose+=(f0[v][0]<f0[v][1])?(f0[v][0]):(f0[v][1]);
+            }
+        }
+        ft[x][0]=n_chose;
+        ft[x][1]=chose;
+        x=par[x];
+    }
 }
 
 void dfs(int x,int pa){
