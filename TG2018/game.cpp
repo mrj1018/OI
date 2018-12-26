@@ -89,17 +89,17 @@ void dfs(int x,int y){
                 break;
             }
         }
+
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=m;j++){
+            	printf("%d ",w[i][j]);
+	        }
+			printf("\n");
+		}
+		printf("-- %s --\n",ok?"ok":"nok");
+
         if (ok){
             ans++;
-            
-            for (int i=1;i<=n;i++){
-            	for (int j=1;j<=m;j++){
-            		printf("%d ",w[i][j]);
-				}
-				printf("\n");
-			}
-			printf("------\n");
-            
             if (ans==MOD)
                 ans=0;
         }
@@ -110,11 +110,13 @@ void dfs(int x,int y){
         return;
     }
     w[x][y]=0;
+    printf("w[%d][%d]=%d\n",x,y,0);
     dfs(x+1,y);
-    if (x==n || y==1 || w[x+1][y-1]){
+    //if (x==n || y==1 || w[x+1][y-1]){
     	w[x][y]=1;
+        printf("w[%d][%d]=%d\n",x,y,1);
     	dfs(x+1,y);
-	}
+//}
 }
 
 void check(int x,int y,int tpath,int tw){
