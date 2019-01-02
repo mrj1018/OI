@@ -13,23 +13,10 @@ typedef int io_t;
 io_t uread(void);
 void uwrite(io_t x,char spliter='\n');
 
-int n,m;
-int ans=0;
-int methods;
-int w[MAXN][MAXN];
-
-struct Method{
-    int path;
-    int w;
-    friend bool operator<(const Method& lhs,const Method& rhs);
-};
-Method me[MAXMET];
-
-void dfs(int x,int y);
-void check(int x,int y,int tpath,int tw);
 int kasumi(int a,int b);
 
 int main(void){
+    int n,m;
     n=uread(),m=uread();
     if (n==1){
         uwrite(kasumi(2,m));
@@ -76,116 +63,53 @@ int main(void){
     	if (m==5){
     		uwrite(7136);
     		return 0;
-		}
-		long long ans;
-		ans=(long long)(kasumi(3,m-5));
-		ans=ans*7104%MOD;  //7136-2**5
-		uwrite((int)(ans));
-		return 0;
-	}
-	if (m==6)
+        }
+        long long ans;
+        ans=(long long)(kasumi(3,m-5));
+        ans=ans*7104%MOD;  //7136-2**5
+        uwrite((int)(ans));
+        return 0;
+    }
+    if (m==6)
     	swap(n,m);
     if (n==6){
     	if (m==6){
     		uwrite(56768);
     		return 0;
-		}
-		long long ans;
-		ans=(long long)(kasumi(3,m-6));
-		ans=ans*56704%MOD;  //56768-2**6
-		uwrite((int)(ans));
-		return 0;
-	}
-	if (m==7)
+        }
+        long long ans;
+        ans=(long long)(kasumi(3,m-6));
+        ans=ans*56704%MOD;  //56768-2**6
+        uwrite((int)(ans));
+        return 0;
+    }
+    if (m==7)
     	swap(n,m);
     if (n==7){
     	if (m==7){
     		uwrite(453504);
     		return 0;
-		}
-		long long ans;
-		ans=(long long)(kasumi(3,m-7));
-		ans=ans*453376%MOD;  //453504-2**7
-		uwrite((int)(ans));
-		return 0;
-	}
-	if (m==8)
+        }
+        long long ans;
+        ans=(long long)(kasumi(3,m-7));
+        ans=ans*453376%MOD;  //453504-2**7
+        uwrite((int)(ans));
+        return 0;
+    }
+    if (m==8)
     	swap(n,m);
     if (n==8){
     	if (m==8){
     		uwrite(3626752);
     		return 0;
-		}
-		long long ans;
-		ans=(long long)(kasumi(3,m-8));
-		ans=ans*3626496%MOD;  //3626752-2**8
-		uwrite((int)(ans));
-		return 0;
-	}
-    //BF Search
-    dfs(1,1);
-    uwrite(ans);
+        }
+        long long ans;
+        ans=(long long)(kasumi(3,m-8));
+        ans=ans*3626496%MOD;  //3626752-2**8
+        uwrite((int)(ans));
+        return 0;
+    }
     return 0;
-}
-
-void dfs(int x,int y){
-	//printf("dfs(%d,%d)\n",x,y);
-    if (y==m+1){
-        methods=0;
-        check(1,1,0,0);
-        sort(me,me+methods);
-        int ok=1;
-        for (int i=1;i<methods;i++){
-            if (me[i].w<me[i-1].w){
-                ok=0;
-                break;
-            }
-        }
-
-        /*for (int i=1;i<=n;i++){
-            for (int j=1;j<=m;j++){
-            	printf("%d ",w[i][j]);
-	        }
-			printf("\n");
-		}
-		printf("-- %s --\n",ok?"ok":"nok");*/
-
-        if (ok){
-            ans++;
-            if (ans==MOD)
-                ans=0;
-        }
-        return;
-    }
-    if (x==n+1){
-        dfs(1,y+1);
-        return;
-    }
-    w[x][y]=0;
-    //printf("w[%d][%d]=%d\n",x,y,0);
-    dfs(x+1,y);
-    if (x==n || y==1 || w[x+1][y-1]){
-    	w[x][y]=1;
-        //printf("w[%d][%d]=%d\n",x,y,1);
-    	dfs(x+1,y);
-    }
-}
-
-void check(int x,int y,int tpath,int tw){
-    tw=(tw<<1)|(w[x][y]);
-    if (x==n && y==m){
-        me[methods].path=tpath;
-        me[methods].w=tw;
-        methods++;
-        return;
-    }
-    //R
-    if (x<n)
-        check(x+1,y,((tpath<<1)|1),tw);
-    
-    //D
-    if (y<m)
-        check(x,y+1,((tpath<<1)),tw);
 }
 
 int kasumi(int a,int b){
@@ -197,10 +121,6 @@ int kasumi(int a,int b){
         b>>=1;
     }
     return int(ans);
-}
-
-bool operator<(const Method& lhs,const Method& rhs){
-    return lhs.path<rhs.path;
 }
 
 io_t uread(void){
