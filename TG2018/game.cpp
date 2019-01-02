@@ -39,7 +39,7 @@ int main(void){
         uwrite(kasumi(2,n));
         return 0;
     }
-    /*if (m==2)
+    if (m==2)
         swap(n,m);
     if (n==2){
         long long ans;
@@ -47,8 +47,8 @@ int main(void){
         ans=ans*4%MOD;
         uwrite((int)(ans));
         return 0;
-    }*/
-    /*if (m==3)
+    }
+    if (m==3)
         swap(n,m);
     if (n==3){
         long long ans;
@@ -56,7 +56,7 @@ int main(void){
         ans=ans*112%MOD;
         uwrite((int)(ans));
         return 0;
-    }*/
+    }
     if (m==4)
         swap(n,m);
     if (n==4){
@@ -65,11 +65,63 @@ int main(void){
             return 0;
         }
         long long ans;
-        ans=(long long)(kasumi(3,m-5));
-        ans=ans*2688%MOD;
+        ans=(long long)(kasumi(3,m-4));
+        ans=ans*896%MOD;
         uwrite((int)(ans));
         return 0;
     }
+    if (m==5)
+    	swap(n,m);
+    if (n==5){
+    	if (m==5){
+    		uwrite(7136);
+    		return 0;
+		}
+		long long ans;
+		ans=(long long)(kasumi(3,m-5));
+		ans=ans*7104%MOD;  //7136-2**5
+		uwrite((int)(ans));
+		return 0;
+	}
+	if (m==6)
+    	swap(n,m);
+    if (n==6){
+    	if (m==6){
+    		uwrite(56768);
+    		return 0;
+		}
+		long long ans;
+		ans=(long long)(kasumi(3,m-6));
+		ans=ans*56704%MOD;  //56768-2**6
+		uwrite((int)(ans));
+		return 0;
+	}
+	if (m==7)
+    	swap(n,m);
+    if (n==7){
+    	if (m==7){
+    		uwrite(453504);
+    		return 0;
+		}
+		long long ans;
+		ans=(long long)(kasumi(3,m-7));
+		ans=ans*453376%MOD;  //453504-2**7
+		uwrite((int)(ans));
+		return 0;
+	}
+	if (m==8)
+    	swap(n,m);
+    if (n==8){
+    	if (m==8){
+    		uwrite(3626752);
+    		return 0;
+		}
+		long long ans;
+		ans=(long long)(kasumi(3,m-8));
+		ans=ans*3626496%MOD;  //3626752-2**8
+		uwrite((int)(ans));
+		return 0;
+	}
     //BF Search
     dfs(1,1);
     uwrite(ans);
@@ -77,7 +129,7 @@ int main(void){
 }
 
 void dfs(int x,int y){
-	printf("dfs(%d,%d)\n",x,y);
+	//printf("dfs(%d,%d)\n",x,y);
     if (y==m+1){
         methods=0;
         check(1,1,0,0);
@@ -90,13 +142,13 @@ void dfs(int x,int y){
             }
         }
 
-        for (int i=1;i<=n;i++){
+        /*for (int i=1;i<=n;i++){
             for (int j=1;j<=m;j++){
             	printf("%d ",w[i][j]);
 	        }
 			printf("\n");
 		}
-		printf("-- %s --\n",ok?"ok":"nok");
+		printf("-- %s --\n",ok?"ok":"nok");*/
 
         if (ok){
             ans++;
@@ -110,13 +162,13 @@ void dfs(int x,int y){
         return;
     }
     w[x][y]=0;
-    printf("w[%d][%d]=%d\n",x,y,0);
+    //printf("w[%d][%d]=%d\n",x,y,0);
     dfs(x+1,y);
-    //if (x==n || y==1 || w[x+1][y-1]){
+    if (x==n || y==1 || w[x+1][y-1]){
     	w[x][y]=1;
-        printf("w[%d][%d]=%d\n",x,y,1);
+        //printf("w[%d][%d]=%d\n",x,y,1);
     	dfs(x+1,y);
-//}
+    }
 }
 
 void check(int x,int y,int tpath,int tw){
@@ -128,12 +180,12 @@ void check(int x,int y,int tpath,int tw){
         return;
     }
     //R
-    if (y<m)
-        check(x,y+1,((tpath<<1)|1),tw);
+    if (x<n)
+        check(x+1,y,((tpath<<1)|1),tw);
     
     //D
-    if (x<n)
-        check(x+1,y,((tpath<<1)),tw);
+    if (y<m)
+        check(x,y+1,((tpath<<1)),tw);
 }
 
 int kasumi(int a,int b){
