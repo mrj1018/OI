@@ -4,12 +4,14 @@
 #define LOWBIT(x) ((x)&(-(x)))
 using namespace std;
 int n;
+long long ans=0;
 int pow2[MAXLG];
 int lg2[MAXN];
 int a[MAXN];
 int st[MAXLG][MAXN];
 void rmq_init(void);
-int rmq_query(int a,int b);
+int rmq_query(int l,int r);
+void solve(int l,int r,int dep);
 int main(void){
     scanf("%d",&n);
     lg2[1]=0,pow2[0]=1; //log_2(1)=0,2^0=1
@@ -24,13 +26,28 @@ int main(void){
     for (int i=1;i<=n;i++)
         scanf("%d",a+i);
     rmq_init();
+    solve(1,n+1,0);
+    printf("%lld",ans);
     return 0;
+}
+
+void solve(int l,int r,int dep){
+    if (r<=l)
+        return;
+    if (r-l==1){
+        ans+=a[l]-dep;
+        return;
+    }
+    int mid=rmq_query(l,r);
+    ans+=(a[mid]-dep);
+    solve(l,mid,a[mid]);
+    solve(mid+1,r,a[mid]);
 }
 
 void rmq_init(void){
     //[i,i+2^k) - length is 2^k
     int lgn=lg2[n];
-    for (int i=1;i<n;i++)
+    for (int i=1;i<=n;i++)
         st[0][i]=i;
     for (int k=1;k<=lgn;k++){
         int pw2=pow2[k];
@@ -46,8 +63,14 @@ void rmq_init(void){
     }
 }
 
-int rmq_query(int a,int b){
-    //[a,b)
-    int l=b-a;
-    //Choose k that 2^(k+1)>=l
+int rmq_query(int l,int r){
+    //[l,r)
+    int full_len=r-l;
+    //Choose k that 2^k<=l
+    int lglen=lg2[full_len];
+    int len=pow2[lglen];
+    int inda,indb;
+    inda=st[lglen][l];
+    indb=st[lglen][r-len];
+    return (a[inda]<a[indb])?(inda):(indb);
 }
