@@ -37,6 +37,8 @@ int main(void){
     for (int i=1;i<n;i++){
         int tn=n-i;
         mxa=ele[i].a;
+        if (i<n-1 && ele[i].a==ele[i+1].a)
+            continue;
         //[1,i],[i+1,n]
         for (int j=i+1,tj=0;j<=n;j++,tj++)
             tarr[tj]=ele[j];
@@ -47,6 +49,8 @@ int main(void){
             (tarr[j+1].c>mxc)?(mxc=tarr[j+1].c):(0);
             (tarr[j].b+mxc<tans)?(tans=tarr[j].b+mxc):(0);
         }
+        (tarr[0].c>mxc)?(mxc=tarr[0].c):(0);
+        (mxc<tans)?(tans=mxc):(0);
         (tans+mxa<ans)?(ans=tans+mxa):(0);
     }
     printf("%d\n",ans);
