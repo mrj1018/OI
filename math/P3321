@@ -1,0 +1,74 @@
+//P3321 ord and NTT
+#include <cstdio>
+#include <cctype>
+#define N 32768
+#define MAXN 32775
+#define MAXIOLG 25
+#define G 3ll
+#define GINV 334845270
+#define MOD 1004535809ll
+#define MMOD 1004535808ll
+#define FILENAME(x)\
+freopen(x".in","r",stdin);\
+freopen(x".out","w",stdout);
+using namespace std;
+
+typedef long long ll;
+typedef ll io_t;
+io_t shin[MAXIOLG];
+io_t seto(void);
+void ayano(io_t x,char spliter='\n');
+
+ll a[MAXN],b[MAXN],t[MAXN];
+int rev[MAXN];
+
+namespace NTT{
+    void init(void){
+        rev[0]=0;
+        
+    }
+}
+
+int main(void){
+    
+    return 0;
+}
+
+io_t seto(void){
+    char ch=getchar();
+    io_t ans=0;
+    int symbol=0;
+    while (!isdigit(ch)){
+        if (ch=='-')
+            symbol=1;
+        ch=getchar();
+    }
+    while (isdigit(ch)){
+        ans=(ans*10)+(ch-'0');
+        ch=getchar();
+    }
+    return (symbol)?(-ans):(ans);
+}
+
+void ayano(io_t x,char spliter){
+    if (!x){
+        putchar('0');
+        putchar(spliter);
+        return;
+    }
+    if (x<0){
+        putchar('-');
+        x=-x;
+    }
+    int len=0;
+    while (x){
+        io_t d=x/10;
+        shin[len++]=x-d*10;
+        x=d;
+    }
+    while (len){
+        len--;
+        putchar(shin[len]+'0');
+    }
+    putchar(spliter);
+}
