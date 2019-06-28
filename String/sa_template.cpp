@@ -15,14 +15,17 @@ int seto_str(void);
 void ayano(io_t x,char spliter='\n');
 
 char str[MAXN];
-int sa[MAXN],rk[MAXN],tp[MAXN],bucket[MAXN];
+int sa[MAXN],rk[MAXN],tp[MAXN],bucket[MAXN],height[MAXN];
 
 void suffix_sort(int n);
 void bucket_sort(int n,int m);
+void get_height(int n);
+
 
 int main(void){
     int n=seto_str();
     suffix_sort(n);
+    get_height(n);
     
     return 0;
 }
@@ -46,6 +49,18 @@ void suffix_sort(int n){
             rk[sa[i]]=(tp[sa[i]]==tp[sa[i-1]] && tp[sa[i]+w]==tp[sa[i-1]+w])?
             (p):(++p);
     }
+}
+
+void get_height(int n){
+    int lh=0;
+    for (int i=1;i<=n;i++){
+        (lh>0)?(lh--):(0);
+        int k=sa[rk[i]-1];
+        while (str[i+lh]==str[k+lh])
+            lh++;
+        height[rk[i]]=lh;
+    }
+    height[1]=0;
 }
 
 void bucket_sort(int n,int m){
