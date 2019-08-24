@@ -100,21 +100,48 @@ IDE：Dev C++ 之类的入门 IDE
 
 ##### 屏幕画面：看较复杂的教程
 
+如：
+
+[09 二分图](https://www.luogu.org/blog/hyde2002/er-fen-tu-pi-pei-xue-xi-bi-ji)
+
+[10 素数筛优化](https://www.luogu.org/blog/returntime/qian-tan-su-shuo-shai-you-hua)
+
+[11 单调队列（笑）](https://www.luogu.org/blog/Sweetlemon/dan-diao-dui-lie)
+
 ##### 屏幕画面：看较难题目
+
+[12 愤怒的小鸟](https://www.luogu.org/problem/P2831)
+
+[13 osu!](https://www.luogu.org/problem/P1365)
+
+[14 地震后的幻想乡](https://www.luogu.org/problem/P3343)
+
+[15 Ynoi](https://www.luogu.org/problem/P4680)
 
 ##### 屏幕画面：写较难题目代码（较长）
 
+[16 文艺平衡树](https://www.luogu.org/problem/P3391)
+
+[17 喵星球上的点名](https://www.luogu.org/problem/P2336)
+
 ##### 屏幕画面：调题（修改代码，反复提交）
+
+[18 树上游戏](https://www.luogu.org/problem/P2664)
 
 ##### 屏幕画面：QQ 群交流
 
-主动发表意见，帮助别人
+1. 讨论xxx问题（即兴发挥？）
+2. 别人求助一道题，回答：变量没有初始化
 
 ##### 屏幕画面：看国家集训队论文（笑）
 
+随便找一年的来刷过去一下
+
 ##### 屏幕画面：AC 越来越多的题目（加速）
 
-此画面内容：扫题目，飞速敲代码（经过加速），光速 AC
+扫一道[题目：GXOI 旅行者](https://www.luogu.org/problem/P5304)，飞速敲代码（经过加速），光速 AC
+
+然后画面飞扫一大堆 AC
 
 （这附近字幕配上“我逐渐认识到，大数据、人工智能的基础，其实就是我指尖的基本算法。它们能解决问题，改变人们的生活——当然，也改变我的思维方式。”之类）
 
@@ -122,19 +149,29 @@ IDE：Dev C++ 之类的入门 IDE
 
 ##### QQ 群交流：组织宣传活动
 
+即兴发挥？
+
 ##### QQ 群交流：元旦晚会活动
 
+即兴发挥？
+
 ##### 屏幕画面：写活动所用的代码
+
+直接把去年元旦晚会的代码调出来加工就好了
 
 #### Scene 5：回眸
 
 ##### 屏幕画面：各种高级算法（较快地闪过去）
 
+扫过代码文件？
+
 ##### 屏幕画面：各种语言的 Hello, World
+
+C/C++, Python, Java, Visual Basic, ...
 
 ##### 屏幕画面：打开 OJ，看到 Hello, World 这道题
 
-这道题在 LOJ 上有，或者我们可以安排一个从 nnsz.com 进入到校内 Online Judge 的画面
+安排一个从 nnsz.com 进入到校内 Online Judge 的画面
 
 ##### 屏幕画面：重新提交，AC
 
@@ -148,7 +185,15 @@ IDE：Dev C++ 之类的入门 IDE
 
 像幻灯片一样放映
 
-##### 招新、Q 群、例会、打代码的场景、活动场景（元旦晚会、宣传活动）
+##### 招新
+
+##### Q 群
+
+##### 例会
+
+##### 打代码的场景（这个图如果没有就要拍）
+
+##### 活动场景（元旦晚会、宣传活动）
 
 最后是大家的头像
 
@@ -157,3 +202,4 @@ IDE：Dev C++ 之类的入门 IDE
 ##### 01 社标志
 
 ED.
+
