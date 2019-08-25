@@ -50,9 +50,7 @@ IDE：Dev C++ 之类的入门 IDE
 
 比如：
 
-[01 枚举](https://oi-wiki.org/basic/enumerate/)
-
-[02 递归](https://oi-wiki.org/basic/divide-and-conquer/)
+[02 二分](https://oi-wiki.org/basic/binary/)
 
 [03 贪心](https://oi-wiki.org/basic/greedy/)
 
@@ -61,8 +59,6 @@ IDE：Dev C++ 之类的入门 IDE
 比如：
 
 [04 汉诺塔](https://www.luogu.org/problem/P1096)
-
-[05 你的飞碟在这儿](https://www.luogu.org/problem/P1200)
 
 [06 合并果子](https://www.luogu.org/problem/P1090)
 
@@ -110,8 +106,6 @@ IDE：Dev C++ 之类的入门 IDE
 
 ##### 屏幕画面：看较难题目
 
-[12 愤怒的小鸟](https://www.luogu.org/problem/P2831)
-
 [13 osu!](https://www.luogu.org/problem/P1365)
 
 [14 地震后的幻想乡](https://www.luogu.org/problem/P3343)
@@ -121,8 +115,6 @@ IDE：Dev C++ 之类的入门 IDE
 ##### 屏幕画面：写较难题目代码（较长）
 
 [16 文艺平衡树](https://www.luogu.org/problem/P3391)
-
-[17 喵星球上的点名](https://www.luogu.org/problem/P2336)
 
 ##### 屏幕画面：调题（修改代码，反复提交）
 
